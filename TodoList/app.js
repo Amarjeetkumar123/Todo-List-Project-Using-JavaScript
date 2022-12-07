@@ -11,11 +11,15 @@ btn.addEventListener("click", () => {
   }
 
   const li = document.createElement("li");
-  li.innerText = TodoText;
+  li.innerHTML = `${TodoText} <i class="fa-solid fa-trash-can"></i>`;
 
   // adding remove todo event
-  li.addEventListener("click", () => {
+  li.querySelector("i").addEventListener("click", () => {
     li.remove();
+  });
+
+  li.addEventListener("click", () => {
+    li.classList.toggle("done");
   });
 
   list.append(li);
