@@ -45,22 +45,25 @@ input {
   outline: none;
   border: 1px solid #fff;
   border-radius: 5px;
+  box-shadow: 1px 3px 2px #ffffff;
 }
 
 button {
   font-size: 20px;
   margin-left: 10px;
-  padding: 1px 10px;
-  border: 1px solid blueviolet;
+  padding: 2px 10px;
+  border: 1px solid #7400b8;
   border-radius: 5px;
   cursor: pointer;
-  background-color: blueviolet;
+  background-color: #7400b8;
   color: #fff;
+  box-shadow: 1px 3px 2px blueviolet;
 }
 
 button:hover{
     border: 1px solid rgb(5, 177, 5);
     background-color: rgb(5, 177, 5);
+    box-shadow: 1px 3px 2px rgb(5, 177, 5);
 }
 
 ul {
@@ -75,16 +78,17 @@ ul li {
   border-radius: 5px;
   background-color: #fff;
   /* border: 1px solid #fff; */
-  margin: 5px 0px;
+  margin: 12px 0px;
   cursor: pointer;
   font-weight: 600;
   display: flex;
   justify-content: space-between;
   align-items: center;
   user-select: none;
+  box-shadow: 1px 3px 2px #ffffff;
 }
 
-i:hover{
+li i:hover{
     color: #ff0000;
 }
 
