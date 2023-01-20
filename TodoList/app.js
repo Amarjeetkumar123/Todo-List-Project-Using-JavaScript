@@ -2,7 +2,23 @@ const inp = document.querySelector("#inp");
 const btn = document.querySelector("#btn");
 const list = document.querySelector("#list");
 
-btn.addEventListener("click", () => {
+const removeTodo = (li)=> {
+  
+  li.querySelector("i").addEventListener("click", () => {
+    li.remove();
+  });
+
+};
+
+const checkTodo = (li) => {
+  
+   li.addEventListener("click", () => {
+     li.classList.toggle("done");
+   });
+}
+
+const addTodo = () => {
+  
   const TodoText = inp.value;
 
   if (TodoText === "") {
@@ -13,42 +29,22 @@ btn.addEventListener("click", () => {
   const li = document.createElement("li");
   li.innerHTML = `${TodoText} <i class="fa-solid fa-trash-can"></i>`;
 
-  // adding remove todo event
-  li.querySelector("i").addEventListener("click", () => {
-    li.remove();
-  });
+  // remove todo
+  removeTodo(li);
 
-  li.addEventListener("click", () => {
-    li.classList.toggle("done");
-  });
+ // Mark todo
+  checkTodo(li);
+
 
   list.append(li);
   inp.value = "";
+};
+
+// events
+btn.addEventListener("click", () => {
+  addTodo();
 });
 
-
-inp.addEventListener("keypress", (e) => {
-  if (e.key == "Enter") {
-    const TodoText = inp.value;
-
-    if (TodoText === "") {
-      alert("Empty Todo...");
-      return;
-    }
-
-    const li = document.createElement("li");
-    li.innerHTML = `${TodoText} <i class="fa-solid fa-trash-can"></i>`;
-
-    // adding remove todo event
-    li.querySelector("i").addEventListener("click", () => {
-      li.remove();
-    });
-
-    li.addEventListener("click", () => {
-      li.classList.toggle("done");
-    });
-
-    list.append(li);
-    inp.value = "";
-  }
+inp.addEventListener("keyup", (e) => {
+  if (e.keyCode === 13 && e.target.value != "") addTodo();
 });
