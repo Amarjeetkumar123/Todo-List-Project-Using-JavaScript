@@ -102,17 +102,16 @@ ul li {
   
 }
 
-li i{
+li .edit , .trash{
   float: right;
-  padding-top: 5px;
   
 }
 
-li i:nth-of-type(2){
+li .edit{
     color: blue;
     margin-right: 20px;
 }
-li i:nth-of-type(1){
+li .trash{
     color: #ff0000;
     margin-right: 5px;
 }

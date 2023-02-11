@@ -22,7 +22,7 @@ function insertItem(itemToInsert) {
   saveTodo(listItmes);
 }
 
-function deleteAllTodoList(){
+function deleteAllTodoList() {
   localStorage.removeItem("items");
   inp.value = "";
   addBtn.style.display = "block";
@@ -41,8 +41,8 @@ function deleteTodoList(item) {
 
 function deleteTodo(liElement) {
   // console.log(liElement);
-  liElement.childNodes[1].addEventListener("click", () => {
-    const item = liElement.firstChild.data;
+  liElement.children[1].addEventListener("click", () => {
+    const item = liElement.innerText;
 
     deleteTodoList(item);
 
@@ -51,18 +51,20 @@ function deleteTodo(liElement) {
   return;
 }
 
+
 function checkedTodo(liElement) {
-  liElement.addEventListener("click", () => {
+  // console.log(liElement.firstChild);
+  liElement.firstChild.addEventListener("click", () => {
     liElement.classList.toggle("done");
   });
   return;
 }
 
 function editTodo(liElement) {
-  liElement.childNodes[3].addEventListener("click", () => {
+  liElement.lastChild.addEventListener("click", () => {
     inp.name = liElement.innerText;
     // console.log(text);
-    inp.value = liElement.firstChild.data;
+    inp.value = liElement.innerText;
     addBtn.style.display = "none";
     saveBtn.style.display = "block";
   });
@@ -70,7 +72,6 @@ function editTodo(liElement) {
 }
 
 saveBtn.addEventListener("click", () => {
-
   let listItems = getTodo();
   const idx = listItems.indexOf(inp.name);
   // console.log(idx);
@@ -81,8 +82,6 @@ saveBtn.addEventListener("click", () => {
   saveBtn.style.display = "none";
   refreshList();
 });
-
-
 
 function insertItemOnClick(e) {
   if (inp.value != "") {
@@ -116,14 +115,14 @@ function refreshList() {
 
   todos.forEach((element) => {
     const liElement = document.createElement("li");
-    liElement.innerHTML = `${element} <i class="fa-solid fa-trash-can"> </i> <i class="fa-solid fa-pen-to-square"> </i>`;
+    liElement.innerHTML = `<span>${element}</span> <span class="trash"><i class="fa-solid fa-trash-can"> </i></span> <span class="edit"><i class="fa-solid fa-pen-to-square"> </i></span>`;
 
     deleteTodo(liElement);
     // Mark todo done
     checkedTodo(liElement);
 
     // edit todo
-    // console.log(liElement);
+    console.log(liElement);
     editTodo(liElement);
 
     list.appendChild(liElement);
