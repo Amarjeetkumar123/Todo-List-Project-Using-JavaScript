@@ -51,12 +51,12 @@ function deleteTodo(liElement) {
   return;
 }
 
-// function checkedTodo(liElement) {
-//   liElement.addEventListener("click", () => {
-//     liElement.classList.toggle("done");
-//   });
-//   return;
-// }
+function checkedTodo(liElement) {
+  liElement.addEventListener("click", () => {
+    liElement.classList.toggle("done");
+  });
+  return;
+}
 
 function editTodo(liElement) {
   liElement.childNodes[3].addEventListener("click", () => {
@@ -120,7 +120,7 @@ function refreshList() {
 
     deleteTodo(liElement);
     // Mark todo done
-    // checkedTodo(liElement);
+    checkedTodo(liElement);
 
     // edit todo
     // console.log(liElement);
